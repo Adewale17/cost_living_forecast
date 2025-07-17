@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+{% block title %}Forecast - Student Cost Forecast{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-8">
+    <div class="card p-4">
+      <h2 class="mb-4 text-center text-success">Forecast Your Yearly Cost</h2>
+      <form method="POST" action="/forecast">
+        <div class="row mb-3">
+          <div class="col">
+            <label for="gender" class="form-label">Gender</label>
+            <select name="gender" class="form-select" required>
+              <option value="">Select</option>
+              <option>Male</option>
+              <option>Female</option>
+            </select>
+          </div>
+          <div class="col">
+            <label for="year" class="form-label">Year</label>
+            <select name="year" class="form-select" required>
+              <option value="">Select</option>
+              <option>Fresher</option>
+              <option>Staylite</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="lifestyle" class="form-label">Lifestyle</label>
+          <select name="lifestyle" class="form-select" required>
+            <option value="">Select</option>
+            <option>Minimal</option>
+            <option>Moderate</option>
+            <option>Expensive</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="accommodation" class="form-label">Accommodation Type</label>
+          <select name="accommodation" class="form-select" required>
+            <option value="">Select</option>
+            <option>Campus Hostel</option>
+            <option>Off-Campus</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="finance" class="form-label">Finance Sources</label>
+          <select name="finance" class="form-select" required>
+            <option value="">Select</option>
+            <option>Parents</option>
+            <option>Aid</option>
+            <option>Scholarship</option>
+            <option>Self</option>
+            <option>Parents + Aid</option>
+            <option>Parents + Scholarship</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="income" class="form-label">Do You Earn Income?</label>
+          <select name="income" class="form-select" required>
+            <option value="">Select</option>
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </div>
+
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary btn-lg">Forecast</button>
+        </div>
+      </form>
+
+      {% if prediction %}
+        <div class="alert alert-success mt-4 text-center fs-5">
+          {{ prediction }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

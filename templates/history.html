@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block title %}Prediction History{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h3 class="mb-4">📜 Your Prediction History</h3>
+  {% if predictions %}
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+          <tr>
+            <th>#</th>
+            <th>Gender</th>
+            <th>Year</th>
+            <th>Lifestyle</th>
+            <th>Accommodation</th>
+            <th>Finance</th>
+            <th>Earn Income?</th>
+            <th>Predicted Cost (₦)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for p in predictions %}
+          <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ p.gender }}</td>
+            <td>{{ p.year }}</td>
+            <td>{{ p.lifestyle }}</td>
+            <td>{{ p.accommodation_type }}</td>
+            <td>{{ p.finance_sources }}</td>
+            <td>{{ p.earn_income }}</td>
+            <td>₦{{ "{:,.2f}".format(p.predicted_cost) }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <p class="text-muted">You have not made any predictions yet.</p>
+  {% endif %}
+</div>
+{% endblock %}
